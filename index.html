@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои задачи</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Заголовок и переключатели -->
+        <header class="header">
+            <h1 id="app-title">Мои задачи</h1>
+            <div class="header-controls">
+                <select id="language-select" class="lang-select">
+                    <option value="ru">🇷🇺 Русский</option>
+                    <option value="uk">🇺🇦 Українська</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="en">🇬🇧 English</option>
+                </select>
+                <button id="theme-toggle" class="theme-btn" title="Сменить тему">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Навигация по категориям -->
+        <nav class="categories">
+            <button class="category-btn active" data-category="all">
+                <span class="cat-icon">📋</span>
+                <span class="cat-text" data-i18n="all">Все</span>
+                <span class="cat-count" id="count-all">0</span>
+            </button>
+            <button class="category-btn" data-category="today">
+                <span class="cat-icon">📅</span>
+                <span class="cat-text" data-i18n="today">Сегодня</span>
+                <span class="cat-count" id="count-today">0</span>
+            </button>
+            <button class="category-btn" data-category="planned">
+                <span class="cat-icon">🧠</span>
+                <span class="cat-text" data-i18n="planned">В планах</span>
+                <span class="cat-count" id="count-planned">0</span>
+            </button>
+            <button class="category-btn" data-category="completed">
+                <span class="cat-icon">✅</span>
+                <span class="cat-text" data-i18n="completed">Завершенные</span>
+                <span class="cat-count" id="count-completed">0</span>
+            </button>
+            <button class="category-btn" data-category="deleted">
+                <span class="cat-icon">🗑️</span>
+                <span class="cat-text" data-i18n="deleted">Удалённые</span>
+                <span class="cat-count" id="count-deleted">0</span>
+            </button>
+        </nav>
+
+        <!-- Форма добавления задачи -->
+        <form id="task-form" class="task-form">
+            <div class="form-row">
+                <div class="form-group task-input-group">
+                    <label for="task-input" data-i18n="task">Задача</label>
+                    <input type="text" id="task-input" placeholder="" required>
+                </div>
+            </div>
+            <div class="form-row form-row-small">
+                <div class="form-group">
+                    <label for="task-date" data-i18n="date">Дата</label>
+                    <input type="date" id="task-date">
+                </div>
+                <div class="form-group">
+                    <label for="task-topic" data-i18n="topic">Тема</label>
+                    <select id="task-topic">
+                        <option value="none" data-i18n="noTopic">Без темы</option>
+                        <option value="work" data-i18n="work">Работа</option>
+                        <option value="study" data-i18n="study">Учёба</option>
+                        <option value="personal" data-i18n="personal">Личное</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="task-priority" data-i18n="priority">Приоритетность</label>
+                    <select id="task-priority">
+                        <option value="low" data-i18n="low">🟢 Низкая</option>
+                        <option value="medium" data-i18n="medium">🟡 Средняя</option>
+                        <option value="high" data-i18n="high">🔴 Высокая</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="add-btn" data-i18n="add">Добавить</button>
+        </form>
+
+        <!-- Список задач -->
+        <div id="tasks-container" class="tasks-container">
+            <div id="tasks-list" class="tasks-list"></div>
+            <div id="empty-state" class="empty-state">
+                <span class="empty-icon">📝</span>
+                <p data-i18n="noTasks">Нет задач</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
